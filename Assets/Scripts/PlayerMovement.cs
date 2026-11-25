@@ -49,10 +49,15 @@ public class PlayerMovement : MonoBehaviour
     private float walkTurnAcceleration;
     private float airTurnAcceleration;
 
+    private float jumpBuffer;
+    private float jumpBufferTimer;
+    private float coyoteTime;
+    private float coyoteTimeTimer;
     private bool jumping;
     private float jumpStrong;
     private float jumpWeak;
     private float jumpReduction;
+
     private float fallSpeed;
     private float fallStrong;
     private float fallWeak;
@@ -74,6 +79,8 @@ public class PlayerMovement : MonoBehaviour
         walkTurnAcceleration = 60f;
         airTurnAcceleration = 30f;
 
+        jumpBuffer = 0.1f;
+        coyoteTime = 0.1f;
         jumping = false;
         jumpStrong = 15f;
         jumpWeak = 10f;
@@ -190,6 +197,33 @@ public class PlayerMovement : MonoBehaviour
 
 
         //Jump
+
+
+        //Coyote Time
+        if (grounded)
+        {
+            coyoteTimeTimer = coyoteTime;
+        }
+
+        if (coyoteTimeTimer > 0)
+        {
+            coyoteTimeTimer -= Time.fixedDeltaTime;
+        }
+
+
+
+        //Jump Buffer
+        if (jumpPressed)
+        {
+            jumpBufferTimer = jumpBuffer;
+        }
+
+        if (jumpBufferTimer > 0)
+        {
+            jumpBufferTimer -= Time.fixedDeltaTime;
+        }
+
+
         float jumpForce = jumpStrong;
         
 
@@ -203,26 +237,31 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (grounded)
+        if (coyoteTimeTimer > 0)
         {
-            if (jumpPressed)
+            if (jumpBufferTimer > 0)
             {
+                jumpBufferTimer = 0;
+                coyoteTimeTimer = 0;
                 jumping = true;
                 gravity = fallWeak;
                 velocity.y = jumpForce;
+                collision.groundSnap = false;
             }
             else
             {
                 jumping = false;
                 gravity = fallStrong;
+                collision.groundSnap = true;
             }
         }
-        else
+
+        if (!grounded)
         {
             velocity.y = Mathf.MoveTowards(velocity.y, -fallSpeed, gravity * Time.fixedDeltaTime);
         }
 
-        Debug.Log("Jumping: " + jumping);
+        //Debug.Log("Jump Buffer: " + jumpBufferTimer + " Coyote Timer: " + coyoteTimeTimer);
 
         collision.externalVelocity = collision.LocalToGlobal(velocity);
         #region Reset Inputs

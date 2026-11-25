@@ -15,7 +15,7 @@ public class PlayerCollision : MonoBehaviour
     public Vector2 externalVelocity = Vector2.zero;
     public Vector2 internalVelocity = Vector2.zero;
     public float rotation;
-    public bool groundSnap = true;
+    public bool groundSnap = false;
     public bool detectionUp = false;
     public bool detectionDown = false;
     public bool detectionRight = false;
@@ -416,10 +416,10 @@ public class PlayerCollision : MonoBehaviour
                 {
                     spline = childSpline;
 
-                    float3 splinePosition = (float3)spline.transform.InverseTransformPoint(collisionPosition);
+                    float3 splinePosition = (float3)spline.transform.InverseTransformPoint(new Vector3(collisionPosition.x, collisionPosition.y, transform.position.z));
                     SplineUtility.GetNearestPoint(spline.Spline, splinePosition, out float3 closestPoint, out float t);
 
-                    splineZ = ((Vector3)closestPoint).z;
+                    splineZ = childSpline.transform.TransformPoint((Vector3)closestPoint).z;
                     break;
                 }
             }
