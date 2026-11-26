@@ -133,7 +133,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""priority"": 0
                 },
                 {
-                    ""name"": ""Menu"",
+                    ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""6380231d-fe36-4c3f-9f7b-58dbc0daa16b"",
                     ""expectedControlType"": """",
@@ -143,7 +143,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""priority"": 0
                 },
                 {
-                    ""name"": ""Item"",
+                    ""name"": ""Map"",
+                    ""type"": ""Button"",
+                    ""id"": ""32f91fd9-78fe-4541-b350-7cc4433521a6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
+                },
+                {
+                    ""name"": ""Items"",
                     ""type"": ""Button"",
                     ""id"": ""27383570-19af-45ad-aacb-7cea5a1cd9e2"",
                     ""expectedControlType"": """",
@@ -353,7 +363,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""9927cbab-eba9-46d4-918f-3a4e2a2264ed"",
-                    ""path"": ""<Keyboard>/x"",
+                    ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -375,7 +385,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c45a3973-46a5-43ab-96ea-ee876ab0ad6a"",
-                    ""path"": ""<Keyboard>/period"",
+                    ""path"": ""<Keyboard>/slash"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -386,7 +396,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f281d289-7cca-4cca-a15e-618a66789e55"",
-                    ""path"": ""<Keyboard>/c"",
+                    ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -419,7 +429,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d7503e46-4189-49ec-9466-11c0abcda419"",
-                    ""path"": ""<Keyboard>/slash"",
+                    ""path"": ""<Keyboard>/period"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -430,7 +440,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d30668f5-ef46-4d3f-a673-bcdc264593e0"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -467,7 +477,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Menu"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -478,7 +488,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Menu"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -489,7 +499,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Menu"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -566,7 +576,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Item"",
+                    ""action"": ""Items"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -577,7 +587,40 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Item"",
+                    ""action"": ""Items"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cd710781-6ca6-4ce3-b904-3bb83a8bcf26"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Map"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9b1ac098-f466-4458-a074-d16b5a84cc8a"",
+                    ""path"": ""<Keyboard>/backslash"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Map"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""86505968-0647-45d4-b97a-1d447d6a035f"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Map"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -653,8 +696,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_PlayerControls_Jump = m_PlayerControls.FindAction("Jump", throwIfNotFound: true);
         m_PlayerControls_Attack = m_PlayerControls.FindAction("Attack", throwIfNotFound: true);
         m_PlayerControls_Dash = m_PlayerControls.FindAction("Dash", throwIfNotFound: true);
-        m_PlayerControls_Menu = m_PlayerControls.FindAction("Menu", throwIfNotFound: true);
-        m_PlayerControls_Item = m_PlayerControls.FindAction("Item", throwIfNotFound: true);
+        m_PlayerControls_Pause = m_PlayerControls.FindAction("Pause", throwIfNotFound: true);
+        m_PlayerControls_Map = m_PlayerControls.FindAction("Map", throwIfNotFound: true);
+        m_PlayerControls_Items = m_PlayerControls.FindAction("Items", throwIfNotFound: true);
         m_PlayerControls_Confirm = m_PlayerControls.FindAction("Confirm", throwIfNotFound: true);
         m_PlayerControls_Cancel = m_PlayerControls.FindAction("Cancel", throwIfNotFound: true);
     }
@@ -741,8 +785,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControls_Jump;
     private readonly InputAction m_PlayerControls_Attack;
     private readonly InputAction m_PlayerControls_Dash;
-    private readonly InputAction m_PlayerControls_Menu;
-    private readonly InputAction m_PlayerControls_Item;
+    private readonly InputAction m_PlayerControls_Pause;
+    private readonly InputAction m_PlayerControls_Map;
+    private readonly InputAction m_PlayerControls_Items;
     private readonly InputAction m_PlayerControls_Confirm;
     private readonly InputAction m_PlayerControls_Cancel;
     /// <summary>
@@ -773,13 +818,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Dash => m_Wrapper.m_PlayerControls_Dash;
         /// <summary>
-        /// Provides access to the underlying input action "PlayerControls/Menu".
+        /// Provides access to the underlying input action "PlayerControls/Pause".
         /// </summary>
-        public InputAction @Menu => m_Wrapper.m_PlayerControls_Menu;
+        public InputAction @Pause => m_Wrapper.m_PlayerControls_Pause;
         /// <summary>
-        /// Provides access to the underlying input action "PlayerControls/Item".
+        /// Provides access to the underlying input action "PlayerControls/Map".
         /// </summary>
-        public InputAction @Item => m_Wrapper.m_PlayerControls_Item;
+        public InputAction @Map => m_Wrapper.m_PlayerControls_Map;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerControls/Items".
+        /// </summary>
+        public InputAction @Items => m_Wrapper.m_PlayerControls_Items;
         /// <summary>
         /// Provides access to the underlying input action "PlayerControls/Confirm".
         /// </summary>
@@ -826,12 +875,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
-            @Menu.started += instance.OnMenu;
-            @Menu.performed += instance.OnMenu;
-            @Menu.canceled += instance.OnMenu;
-            @Item.started += instance.OnItem;
-            @Item.performed += instance.OnItem;
-            @Item.canceled += instance.OnItem;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
+            @Map.started += instance.OnMap;
+            @Map.performed += instance.OnMap;
+            @Map.canceled += instance.OnMap;
+            @Items.started += instance.OnItems;
+            @Items.performed += instance.OnItems;
+            @Items.canceled += instance.OnItems;
             @Confirm.started += instance.OnConfirm;
             @Confirm.performed += instance.OnConfirm;
             @Confirm.canceled += instance.OnConfirm;
@@ -861,12 +913,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
-            @Menu.started -= instance.OnMenu;
-            @Menu.performed -= instance.OnMenu;
-            @Menu.canceled -= instance.OnMenu;
-            @Item.started -= instance.OnItem;
-            @Item.performed -= instance.OnItem;
-            @Item.canceled -= instance.OnItem;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
+            @Map.started -= instance.OnMap;
+            @Map.performed -= instance.OnMap;
+            @Map.canceled -= instance.OnMap;
+            @Items.started -= instance.OnItems;
+            @Items.performed -= instance.OnItems;
+            @Items.canceled -= instance.OnItems;
             @Confirm.started -= instance.OnConfirm;
             @Confirm.performed -= instance.OnConfirm;
             @Confirm.canceled -= instance.OnConfirm;
@@ -1007,19 +1062,26 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDash(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Menu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMenu(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Item" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Map" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnItem(InputAction.CallbackContext context);
+        void OnMap(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Items" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnItems(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Confirm" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

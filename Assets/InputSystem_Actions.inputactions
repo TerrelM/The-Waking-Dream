@@ -47,7 +47,7 @@
                     "priority": 0
                 },
                 {
-                    "name": "Menu",
+                    "name": "Pause",
                     "type": "Button",
                     "id": "6380231d-fe36-4c3f-9f7b-58dbc0daa16b",
                     "expectedControlType": "",
@@ -57,7 +57,17 @@
                     "priority": 0
                 },
                 {
-                    "name": "Item",
+                    "name": "Map",
+                    "type": "Button",
+                    "id": "32f91fd9-78fe-4541-b350-7cc4433521a6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "Items",
                     "type": "Button",
                     "id": "27383570-19af-45ad-aacb-7cea5a1cd9e2",
                     "expectedControlType": "",
@@ -267,7 +277,7 @@
                 {
                     "name": "",
                     "id": "9927cbab-eba9-46d4-918f-3a4e2a2264ed",
-                    "path": "<Keyboard>/x",
+                    "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -289,7 +299,7 @@
                 {
                     "name": "",
                     "id": "c45a3973-46a5-43ab-96ea-ee876ab0ad6a",
-                    "path": "<Keyboard>/period",
+                    "path": "<Keyboard>/slash",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -300,7 +310,7 @@
                 {
                     "name": "",
                     "id": "f281d289-7cca-4cca-a15e-618a66789e55",
-                    "path": "<Keyboard>/c",
+                    "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -333,7 +343,7 @@
                 {
                     "name": "",
                     "id": "d7503e46-4189-49ec-9466-11c0abcda419",
-                    "path": "<Keyboard>/slash",
+                    "path": "<Keyboard>/period",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -344,7 +354,7 @@
                 {
                     "name": "",
                     "id": "d30668f5-ef46-4d3f-a673-bcdc264593e0",
-                    "path": "<Keyboard>/z",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -381,7 +391,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Menu",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -392,7 +402,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Menu",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -403,7 +413,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Menu",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -480,7 +490,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Item",
+                    "action": "Items",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -491,7 +501,40 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Item",
+                    "action": "Items",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cd710781-6ca6-4ce3-b904-3bb83a8bcf26",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Map",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9b1ac098-f466-4458-a074-d16b5a84cc8a",
+                    "path": "<Keyboard>/backslash",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Map",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "86505968-0647-45d4-b97a-1d447d6a035f",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Map",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

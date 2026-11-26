@@ -20,14 +20,18 @@ public class PlayerMovement : MonoBehaviour
     private bool dash;
     private bool dashPressed;
     private bool dashReleased;
-    //Menu Actions
-    private bool menu;
-    private bool menuPressed;
-    private bool menuReleased;
+    //Pause Actions
+    private bool pause;
+    private bool pausePressed;
+    private bool pauseReleased;
+    //Map Actions
+    private bool map;
+    private bool mapPressed;
+    private bool mapReleased;
     //Item Actions
-    private bool item;
-    private bool itemPressed;
-    private bool itemReleased;
+    private bool items;
+    private bool itemsPressed;
+    private bool itemsReleased;
     //Confirm Actions
     private bool confirm;
     private bool confirmPressed;
@@ -51,11 +55,13 @@ public class PlayerMovement : MonoBehaviour
 
     private float jumpBuffer;
     private float jumpBufferTimer;
+    private float fallBuffer;
+    private float fallBufferTimer;
     private float coyoteTime;
     private float coyoteTimeTimer;
-    private bool jumping;
-    private float jumpStrong;
-    private float jumpWeak;
+    private bool isJumping;
+    public float jumpForceStrong;
+    public float jumpForceWeak;
     private float jumpReduction;
 
     private float fallSpeed;
@@ -80,13 +86,14 @@ public class PlayerMovement : MonoBehaviour
         airTurnAcceleration = 30f;
 
         jumpBuffer = 0.1f;
+        fallBuffer = 0.1f;
         coyoteTime = 0.1f;
-        jumping = false;
-        jumpStrong = 15f;
-        jumpWeak = 10f;
-        jumpReduction = 0.7f;
+        isJumping = false;
+        jumpForceStrong = 21.79f;
+        jumpForceWeak = 19.67f;
+        jumpReduction = 0.5f;
 
-        fallSpeed = 10f;
+        fallSpeed = 19f;
         fallStrong = 60f;
         fallWeak = 45f;
 
@@ -119,15 +126,20 @@ public class PlayerMovement : MonoBehaviour
         if (inputActions.PlayerControls.Dash.WasPressedThisDynamicUpdate()) { dashPressed = true; }
         if (inputActions.PlayerControls.Dash.WasReleasedThisDynamicUpdate()) { dashReleased = true; }
 
-        //Get Menu
-        menu = inputActions.PlayerControls.Menu.ReadValue<float>() == 1;
-        if (inputActions.PlayerControls.Menu.WasPressedThisDynamicUpdate()) { menuPressed = true; }
-        if (inputActions.PlayerControls.Menu.WasReleasedThisDynamicUpdate()) { menuReleased = true; }
+        //Get Pause
+        pause = inputActions.PlayerControls.Pause.ReadValue<float>() == 1;
+        if (inputActions.PlayerControls.Pause.WasPressedThisDynamicUpdate()) { pausePressed = true; }
+        if (inputActions.PlayerControls.Pause.WasReleasedThisDynamicUpdate()) { pauseReleased = true; }
+
+        //Get Map
+        map = inputActions.PlayerControls.Map.ReadValue<float>() == 1;
+        if (inputActions.PlayerControls.Map.WasPressedThisDynamicUpdate()) { mapPressed = true; }
+        if (inputActions.PlayerControls.Map.WasReleasedThisDynamicUpdate()) { mapReleased = true; }
 
         //Get Item
-        item = inputActions.PlayerControls.Item.ReadValue<float>() == 1;
-        if (inputActions.PlayerControls.Item.WasPressedThisDynamicUpdate()) { itemPressed = true; }
-        if (inputActions.PlayerControls.Item.WasReleasedThisDynamicUpdate()) { itemReleased = true; }
+        items = inputActions.PlayerControls.Items.ReadValue<float>() == 1;
+        if (inputActions.PlayerControls.Items.WasPressedThisDynamicUpdate()) { itemsPressed = true; }
+        if (inputActions.PlayerControls.Items.WasReleasedThisDynamicUpdate()) { itemsReleased = true; }
 
         //Get Confirm
         confirm = inputActions.PlayerControls.Confirm.ReadValue<float>() == 1;
@@ -146,8 +158,9 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Jump: " + jump + " Jump Pressed: " + jumpPressed + " Jump Released: " + jumpReleased);
             Debug.Log("Attack: " + attack + " Attack Pressed: " + attackPressed + " Attack Released: " + attackReleased);
             Debug.Log("Dash: " + dash + " Dash Pressed: " + dashPressed + " Dash Released: " + dashReleased);
-            Debug.Log("Menu: " + menu + " Menu Pressed: " + menuPressed + " Menu Released: " + menuReleased);
-            Debug.Log("Item: " + item + " Item Pressed: " + itemPressed + " Item Released: " + itemReleased);
+            Debug.Log("Pause: " + pause + " Pause Pressed: " + pausePressed + " Pause Released: " + pauseReleased);
+            Debug.Log("Map: " + map + " Map Pressed: " + mapPressed + " Map Released: " + mapReleased);
+            Debug.Log("Items: " + items + " Items Pressed: " + itemsPressed + " Items Released: " + itemsReleased);
             Debug.Log("Confirm: " + confirm + " Confirm Pressed: " + confirmPressed + " Confirm Released: " + confirmReleased);
             Debug.Log("Cancel: " + cancel + " Cancel Pressed: " + cancelPressed + " Cancel Released: " + cancelReleased);
         }
@@ -160,11 +173,15 @@ public class PlayerMovement : MonoBehaviour
         grounded = collision.detectionDown;
 
 
-        //Walk
+        //=====================================================================================================================================================
+        //--------------------------------------------------------------------------------------------------------------- >>> WALKING, RUNNING, AND TURNING <<<
+        //=====================================================================================================================================================
 
         float targetAcceration = 0;
         float targetSpeed = 0;
 
+        //If not moving:
+        //else do:
         if (move.x == 0)
         {
             targetSpeed = 0;
@@ -174,44 +191,52 @@ public class PlayerMovement : MonoBehaviour
         {
             targetSpeed = walkSpeed * Mathf.Sign(move.x);
 
-            if (move.x * velocity.x > 0)
+            //If velocity exceeds walking speed:
+            //else do:
+            if (Mathf.Abs(velocity.x) > walkSpeed)
             {
-                targetAcceration = walkAcceleration;
+                targetAcceration = walkDeceleration;
             }
             else
             {
-                if (grounded)
+                //If turning:
+                //else do:
+                if (move.x * velocity.x > 0)
                 {
-                    targetAcceration = walkTurnAcceleration;
+                    targetAcceration = walkAcceleration;
                 }
                 else
                 {
-                    targetAcceration = airTurnAcceleration;
+                    //If grounded:
+                    //else do:
+                    if (grounded)
+                    {
+                        targetAcceration = walkTurnAcceleration;
+                    }
+                    else
+                    {
+                        targetAcceration = airTurnAcceleration;
+                    }
                 }
             }
+
+
+            
         }
 
         velocity.x = Mathf.MoveTowards(velocity.x, targetSpeed, targetAcceration * Time.fixedDeltaTime);
 
 
 
+        //=====================================================================================================================================================
+        //------------------------------------------------------------------------------------------------------------------------- >>> JUMPING AND FALLING <<<
+        //=====================================================================================================================================================
 
-        //Jump
+        //--------------------------------------
+        //>> Timers and Cooldowns for Jumping <<
+        //--------------------------------------
 
-
-        //Coyote Time
-        if (grounded)
-        {
-            coyoteTimeTimer = coyoteTime;
-        }
-
-        if (coyoteTimeTimer > 0)
-        {
-            coyoteTimeTimer -= Time.fixedDeltaTime;
-        }
-
-
-
+        #region Jump Timers
         //Jump Buffer
         if (jumpPressed)
         {
@@ -223,19 +248,34 @@ public class PlayerMovement : MonoBehaviour
             jumpBufferTimer -= Time.fixedDeltaTime;
         }
 
+        //Fall Buffer
+        if (jumpReleased)
+        {
+            fallBufferTimer = fallBuffer;
+        }
+        
+        if (fallBufferTimer > 0)
+        {
+            fallBufferTimer -= Time.fixedDeltaTime;
+        }
 
-        float jumpForce = jumpStrong;
+        //Coyote Time
+        if (grounded)
+        {
+            coyoteTimeTimer = coyoteTime;
+        }
+
+        if (coyoteTimeTimer > 0)
+        {
+            coyoteTimeTimer -= Time.fixedDeltaTime;
+        }
+        #endregion
+
+
         
 
-        if (jumpReleased && jumping)
-        {
-            jumping = false;
-            gravity = fallStrong;
-            if (velocity.y > 0)
-            {
-                velocity.y *= jumpReduction;
-            }
-        }
+        float jumpForce = jumpForceStrong;
+
 
         if (coyoteTimeTimer > 0)
         {
@@ -243,16 +283,27 @@ public class PlayerMovement : MonoBehaviour
             {
                 jumpBufferTimer = 0;
                 coyoteTimeTimer = 0;
-                jumping = true;
+                isJumping = true;
                 gravity = fallWeak;
                 velocity.y = jumpForce;
                 collision.groundSnap = false;
             }
             else
             {
-                jumping = false;
+                isJumping = false;
                 gravity = fallStrong;
                 collision.groundSnap = true;
+            }
+        }
+
+        if ((fallBufferTimer > 0) && isJumping)
+        {
+            fallBufferTimer = 0;
+            isJumping = false;
+            gravity = fallStrong;
+            if (velocity.y > 0)
+            {
+                velocity.y *= jumpReduction;
             }
         }
 
@@ -262,6 +313,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Debug.Log("Jump Buffer: " + jumpBufferTimer + " Coyote Timer: " + coyoteTimeTimer);
+        Debug.Log("Fall Buffer: " + fallBufferTimer + " Jumping: " + isJumping);
 
         collision.externalVelocity = collision.LocalToGlobal(velocity);
         #region Reset Inputs
@@ -271,10 +323,12 @@ public class PlayerMovement : MonoBehaviour
         attackReleased = false;
         dashPressed = false;
         dashReleased = false;
-        menuPressed = false;
-        menuReleased = false;
-        itemPressed = false;
-        itemReleased = false;
+        pausePressed = false;
+        pauseReleased = false;
+        mapPressed = false;
+        mapReleased = false;
+        itemsPressed = false;
+        itemsReleased = false;
         confirmPressed = false;
         confirmReleased = false;
         cancelPressed = false;
